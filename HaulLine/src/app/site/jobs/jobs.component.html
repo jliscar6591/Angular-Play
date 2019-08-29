@@ -1,0 +1,29 @@
+<mat-form-field class="example-form-field" class="search">
+    <input matInput type="text" placeholder="Search">
+    <button mat-button matSuffix mat-icon-button aria-label="search">
+        <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+
+<mat-expansion-panel *ngFor="let job of jobsList, let index = i">
+    <mat-expansion-panel-header class="flex">
+        <mat-panel-title>
+            {{job.name}}
+        </mat-panel-title>
+        <mat-panel-description class="distance">
+            <div>{{job.currentDistance}}</div>
+        </mat-panel-description>
+    </mat-expansion-panel-header>
+    <div class="description">{{job.description}}</div>
+    <div class="weight">Approx. load: {{job.weight}}lbs</div>
+    <div class="flex-end">
+        <div class="flex">
+            <div>
+                <b>{{job.pay | currency}}</b>
+            </div>
+        </div>
+        <div>
+            <button mat-raised-button color="accent" (click)="bid(i)">Bid</button>
+        </div>
+    </div>
+</mat-expansion-panel>

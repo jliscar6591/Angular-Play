@@ -1,9 +1,14 @@
-<div class="login-form">
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="username" value="">
-</mat-form-field>
-<mat-form-field class="example-full-width">
-    <input matInput placeholder="password" value="">
-</mat-form-field>
+<div class="haul-logo">
+    <img src="../../assets/haul-lite.png" class="logo">
 </div>
-<button mat-raised-button routerLink="/jobs" routerLinkActive="active">jobs</button>
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <mat-form-field class="input">
+            <input matInput type="email" placeholder="username" value="" formControlName="username">
+        </mat-form-field>
+        <mat-form-field class="input">
+            <input matInput type="password" placeholder="password" value="" formControlName="password">
+        </mat-form-field>
+        <button mat-raised-button (click)="onSubmit()" color="accent" class="login-btn">Login</button>
+    </form>
+</div>

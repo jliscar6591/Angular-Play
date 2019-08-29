@@ -1,0 +1,34 @@
+<!-- HEADER ALWAYS VISIBILE WHILE IN SITE, HOLDS NOTIFICATIONS MENU-->
+<mat-toolbar class="toolbar">
+   <img src="../../assets/horiz-logo.png" class="horizontal-logo">
+    <div [matMenuTriggerFor]="notificationMenu" matBadge="!" matBadgeColor="accent">
+        <mat-icon>notifications</mat-icon>
+        <mat-menu #notificationMenu="matMenu" xPosition="before">
+            <button routerLink="/jobs" routerLinkActive="active" mat-menu-item>2 New Jobs posted</button>
+        </mat-menu>
+    </div>
+</mat-toolbar>
+<router-outlet></router-outlet>
+<!-- FOOTER ALWAYS VISIBILE WHILE IN SITE, ACTS AS NAV-->
+<div class="footer">
+    <div routerLink="/jobs" routerLinkActive="active">
+        <mat-icon>local_shipping</mat-icon>
+    </div>
+    <div routerLink="/history" routerLinkActive="active">
+        <mat-icon>query_builder</mat-icon>
+    </div>
+    <div routerLink="/create" routerLinkActive="active">
+        <mat-icon>add</mat-icon>
+    </div>
+    <div routerLink="/account" routerLinkActive="active">
+        <mat-icon>account_circle</mat-icon>
+    </div>
+    <div [matMenuTriggerFor]="logoutMenu">
+        <mat-icon>power_settings_new</mat-icon>
+        <mat-menu #logoutMenu="matMenu">
+            <button routerLink="/welcome" routerLinkActive="active" mat-menu-item>Logout</button>
+        </mat-menu>
+    </div>
+
+
+</div>
