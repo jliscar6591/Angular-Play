@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+
+
 
 @Component({
   selector: 'app-login',
@@ -8,19 +11,25 @@ import { Router } from '@angular/router'
 })
 export class LoginComponent implements OnInit {
   public notLogin: boolean = false;
-  
+  public loginForm: FormGroup;
+
   constructor(
     public router: Router,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit() {
-    if (this.router.url !== "login") {
-      this.notLogin === true;
-    }
+    this.loginForm = this.formBuilder.group({
+      username: this.formBuilder.control('', [Validators.required, Validators.email]),
+      password: this.formBuilder.control('', Validators.required)
+    })
+    return this.loginForm;
   }
 
-  public login() {
-
+  public onSubmit() {
+    if(this.loginForm.controls.username.value === 'billy@gmail.com' && this.loginForm.controls.password.value === 'happy1'){
+      this.router.navigateByUrl('jobs');
+    }
   }
 
 }
